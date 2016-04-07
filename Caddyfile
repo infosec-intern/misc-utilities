@@ -1,0 +1,15 @@
+# Main site
+localhost:8080 {
+	gzip
+	log ./log/access.log
+	errors {
+		log ./log/error.log {
+			size 50 # Rotate after 50MB
+			age  30	# Keep rotated files for 30 days
+			keep 5	# Keep at most 5 logfiles
+		}
+		404 ./errors/404.html
+	}
+	# forward Caddy server off to the Flask's web server over loopback interface
+	proxy / localhost:5000
+}
