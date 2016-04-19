@@ -8,7 +8,7 @@ localhost:8080 {
 			age  30	# Keep rotated files for 30 days
 			keep 5	# Keep at most 5 logfiles
 		}
-		404 ./errors/404.html
+		# 404 ./errors/404.html # Caddy 404 pages aren't really necessary if we use it as a reverse-proxy
 	}
 	# forward Caddy server off to the Flask's web server over loopback interface
 	proxy / localhost:5000
